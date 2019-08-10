@@ -1,0 +1,27 @@
+Last login: Sat Aug 10 13:15:20 on ttys000
+(base) dyn-160-39-178-159:~ gizemyali-pepper$ cd Desktop/
+(base) dyn-160-39-178-159:Desktop gizemyali-pepper$ cd python-challenge
+(base) dyn-160-39-178-159:python-challenge gizemyali-pepper$ cd PyBank/
+(base) dyn-160-39-178-159:PyBank gizemyali-pepper$ python main.py 
+Financial Analysis
+---------------------------
+Total months: 86
+Total value: 38382578
+Average Change: -2288.1976744186045
+Greatest Increase in Profits: Feb-2012 (1926159)
+Greatest Decrease in Profits: Sep-2013 (-2196167)
+(base) dyn-160-39-178-159:PyBank gizemyali-pepper$ cd ..
+(base) dyn-160-39-178-159:python-challenge gizemyali-pepper$ cd PyPoll/
+(base) dyn-160-39-178-159:PyPoll gizemyali-pepper$ python main.py 
+Eleection Results
+------------------------
+Total Votes: 3521001
+------------------------
+Khan: 63.0% 2218231
+Correy: 20.0% 704200
+Li: 14.0% 492940
+O'Tooley: 3.0% 105630
+------------------------
+Winner: Khan
+------------------------
+(base) dyn-160-39-178-159:PyPoll gizemyali-pepper$ 
