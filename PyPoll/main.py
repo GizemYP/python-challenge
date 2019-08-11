@@ -1,10 +1,9 @@
 import os
 import csv
-print("Eleection Results")
+print("Election Results")
 print("------------------------")
 
 
-val = []
 candidate = []
 
 csvpath = os.path.join('Resources', 'election_data.csv')
@@ -12,42 +11,34 @@ with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
     csv_header = next(csvfile)
+    name = set()
 
     for col in csvreader:
-        val.append(col)
         candidate.append(col[2])
-        votes = len(val)
+        name.add(col[2])
+    # print(name)
 
-    print(f"Total Votes: {votes}")
+    print(f"Total votes: {len(candidate)}")
     print("------------------------")
+    vote_counter = {}.fromkeys(name, 0)
 
-    Khan = 0
-    Correy = 0
-    Li = 0
-    oTooley = 0
-    c_win = ["Khan", "Correy", "Li", "O'Tooley"]
-    c_tot = []
+    for name in candidate:
+        vote_counter[name] += 1
+    # print(vote_counter)
 
-    for obj in candidate:
-        if obj == "Khan":
-            Khan += 1
-        elif obj == "Correy":
-            Correy += 1
-        elif obj == "Li":
-            Li += 1
-        elif obj == "O'Tooley":
-            oTooley += 1
-    c_tot.append(Khan)
-    c_tot.append(Correy)
-    c_tot.append(Li)
-    c_tot.append(oTooley)
+    percent_votes = {
+        k: str(round(v / total, 2)) + "%" for total in (sum(vote_counter.values())/100,) for k, v in vote_counter.items()}
 
-    print(f"Khan: {round(Khan/len(val) *100,3)}% {c_tot[0]}")
-    print(f"Correy: {round(Correy/len(val) *100,3)}% {c_tot[1]}")
-    print(f"Li: {round(Li/len(val) *100,3)}% {c_tot[2]}")
-    print(f"O'Tooley: {round(oTooley/len(val) *100,3)}% {c_tot[3]}")
+    # print(percent_votes)
+
+    keys = percent_votes.keys()
+    values = zip(percent_votes.values(), vote_counter.values())
+    final_summary = dict(zip(keys, values))
+
+    # print(final_summary)
+    for cand, values in final_summary.items():
+        print(cand, ":", values[0], "(", values[1], ")")
     print("------------------------")
-
-    winner = c_win[c_tot.index(max(c_tot))]
-    print(f"Winner: {winner}")
+    max_key = max(vote_counter, key=lambda k: vote_counter[k])
+    print(f"Winner: {max_key}")
     print("------------------------")
